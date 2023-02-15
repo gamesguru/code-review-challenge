@@ -1,4 +1,4 @@
-# Hello & Welcome!
+# TypeScript (Browser) Code Review Challenge
 
 ### Prompt:
 

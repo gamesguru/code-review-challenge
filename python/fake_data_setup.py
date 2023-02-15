@@ -1,7 +1,5 @@
-import uuid
 import geopandas as gpd
-from shapely.geometry import Point, box
-import random
+import numpy as np
 
 
 def fake_data_setup(number_records: int = 10000) -> None:
@@ -10,16 +8,9 @@ def fake_data_setup(number_records: int = 10000) -> None:
     :param number_records: Number of records to include in the geodataframe
     """
     colors = ['red', 'orange', 'blue', 'magenta', 'magenta', 'magenta']
-
-    df = gpd.GeoDataFrame([
-        {
-            'geometry': Point(random.uniform(-180, 180), random.uniform(-90, 90), random.uniform(0, 1500)),
-            'id': uuid.uuid4(),
-            'color': random.choice(colors),
-            'row': i
-        }
-        for i in range(number_records)
-    ])
+    df = gpd.GeoDataFrame(np.arange(number_records), columns=["id"])
+    df['geometry'] = df.id.apply(lambda i: f"POINT Z ({i % 360 - 180}, {i % 180 - 90}, {i % 1500})")
+    df['color'] = df.id.apply(lambda i: colors[i % len(colors)])
     df.to_csv('demo_data.csv', index=False)
 
 

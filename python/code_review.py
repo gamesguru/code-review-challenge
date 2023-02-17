@@ -14,8 +14,9 @@ def count_records_in_bounds(csv_file, bounds):
         red = 0
         orange = 0
         blue = 0
+        i = 0
         for row in cursor:
-            geometry, position_id, color, row = row.split(',')
+            id, geometry, color = row.split(',')
             geometry = wkt.loads(geometry)
             if bounds.contains(geometry):
                 i = i + 1
@@ -50,7 +51,7 @@ if __name__ == '__main__':
     s = datetime.datetime.now()
     result = count_records_in_bounds(
         Path('demo_data.csv'),
-        box(0, 0, 10, 10)
+        box(-20, -20, 20, 20)
     )
 
     print(datetime.datetime.now() - s)

@@ -9,7 +9,7 @@ def fake_data_setup(number_records: int = 10000) -> None:
     """
     colors = ['red', 'orange', 'blue', 'magenta', 'magenta', 'magenta']
     df = gpd.GeoDataFrame(np.arange(number_records), columns=["id"])
-    df['geometry'] = df.id.apply(lambda i: f"POINT Z ({i % 360 - 180}, {i % 180 - 90}, {i % 1500})")
+    df['geometry'] = df.id.apply(lambda i: f"POINT Z ({160 - i % 320} {60 - i % 120} {i % 1500})")
     df['color'] = df.id.apply(lambda i: colors[i % len(colors)])
     df.to_csv('demo_data.csv', index=False)
 

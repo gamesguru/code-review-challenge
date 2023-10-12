@@ -7,7 +7,7 @@ You are a senior engineer for Wizbang Corp. A new Jr Developer whom you haven’
 ### Instructions:
 
 Please see [the primary readme](https://github.com/airspace-link-inc/code-review-challenge) for additional steps/requirements.
-After completing the code review, please invite **ddbradshaw** and **rkrupinski** as collaborators on your private repo.
+After completing the code review, please invite **kellybigley** and **rkrupinski** as collaborators on your private repo.
 
 The primary focus of the code review should be on the `TypeScript` code, however you may choose to offer additional comments as you play the role of Senior Engineer.
 

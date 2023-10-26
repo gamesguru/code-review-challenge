@@ -8,8 +8,12 @@ import { getCharacter } from "./swService";
 
 console.log("Alpha");
 
-getCharacter((data) => {
-  console.log("Bravo ==>", data);
-});
+async function fetchCharacter() {
+  let results = await getCharacter();
+  console.log("Bravo ==>", results);
+}
 
-console.log("Charlie");
+fetchCharacter()
+  .then(() => console.log("Charlie"))
+  // Manually testing that the cache works!
+  .then(() => fetchCharacter());

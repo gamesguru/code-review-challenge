@@ -9,7 +9,7 @@ let cache: Character;
 export const getCharacter = (): Promise<Character> => {
   if (cache) {
     console.info("Using Cache!")
-    return cache;
+    return Promise.resolve(cache);
   } else {
     return fetch("https://swapi.dev/api/people/1")
       .then((res) => res.json())
@@ -25,7 +25,7 @@ export const getCharacter = (): Promise<Character> => {
           throw new Error("'Name' property missing.");
         };
 
-        return data;
+        return Promise.resolve(data);
       }).catch(error => {
         console.error("Failed to retrieve data from API: " + error.stack);
         throw new Error(error);
